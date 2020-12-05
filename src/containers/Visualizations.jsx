@@ -3,7 +3,7 @@ import axios from "axios";
 import InformationCell from "../component/InformationCell";
 import InformationChart from "../component/InformationChart";
 
-const apiUrl = "http://localhost:8080/"
+const apiUrl = "https://covid-19-api.herokuapp.com/"
 
 const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
