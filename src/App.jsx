@@ -1,16 +1,16 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./containers/Header";
-import Visualizations from "./containers/Visualizations";
+import Footer from "./containers/Footer"
+import Statistics from "./containers/Statistics";
 
 function App() {
     return (
         <div className="App">
             <Header/>
-            <Visualizations/>
-            <div id="copyright">
-                <p>&copy; {new Date().getFullYear()} Copyright: Cyril Gavala</p>
-            </div>
+            <Statistics/>
+            <Footer/>
         </div>
     );
 }

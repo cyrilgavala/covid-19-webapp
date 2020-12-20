@@ -7,8 +7,7 @@ function Header() {
         <div id="app-header">
             <img id="app-header-logo" src={logo} alt={"Header logo"}/> Covid-19 visualization examples
         </div>
-    );
-
+    )
 }
 
 export default Header;
