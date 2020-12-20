@@ -8,7 +8,7 @@ today.setUTCHours(0, 0, 0, 0);
 const yesterday = new Date();
 yesterday.setUTCHours(0, 0, 0, 0);
 yesterday.setDate(yesterday.getDate() - 1);
-const apiUrl = "http://covid-19-api.herokuapp.com/"
+const apiUrl = "https://covid-19-api.herokuapp.com/"
 
 /** @namespace this.state.current.numberOfTests **/
 /** @namespace this.state.current.confirmed **/
