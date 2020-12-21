@@ -1,15 +1,15 @@
 import React from "react";
 import {Spinner} from "react-bootstrap";
-import {CartesianGrid, Line, LineChart, Tooltip, Legend, XAxis, YAxis} from 'recharts';
+import {CartesianGrid, Bar, BarChart, Tooltip, Legend, XAxis, YAxis} from 'recharts';
 
-export default class CustomLineChart extends React.Component {
+export default class CustomBarChart extends React.Component {
 
     render() {
         if (this.props.chartData.length > 0) {
-            const lines = this.props.labels.map(i => {return <Line key={i.label} type="monotone" dataKey={i.label} strokeWidth={3} stroke={i.color} yAxisId={0}/>})
+            const bars = this.props.labels.map(i => {return <Bar key={i.label} type="monotone" dataKey={i.label} fill={i.color} yAxisId={0}/>})
             return <div className={"chart-wrapper"}>
                 <h3 className={"chart-title"}>{this.props.title}</h3>
-                <LineChart
+                <BarChart
                     width={window.innerWidth - 100}
                     height={400}
                     data={this.props.chartData}
@@ -20,8 +20,8 @@ export default class CustomLineChart extends React.Component {
                     <Tooltip isAnimationActive={false} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
                     <Legend/>
                     <CartesianGrid stroke="#fff"/>
-                    {lines}
-                </LineChart>
+                    {bars}
+                </BarChart>
             </div>
         } else {
             return <div className={"loading-wrapper"}>
