@@ -1,12 +1,15 @@
+body {
+  background: url(images/blue-covid-banner.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
 .App {
-  background-color: #cccccc;
-  min-height: 100vh;
-  display: flex;
+  height: 100%;
 }
 
 #app-header {
   height: 50px;
-  background-color: #000000;
+  background-color: #333;
   width: 100%;
   text-align: center;
   float: left;
@@ -17,6 +20,7 @@
   font-weight: bold;
   color: #ffffff;
   z-index: 10;
+  border-bottom: 2px solid #fff;
 }
 
 #app-header-logo {
@@ -25,41 +29,59 @@
   position: fixed;
   top: 0;
   left: 10px;
-  color: #ffffff;
+  filter: invert();
 }
 
-#main-container {
-  margin-top: 60px;
+#statistics-container {
+  margin-top: 70px;
   padding: 0 50px;
   width: 100%;
-  margin-bottom: 70px;
 }
 
-#loading-wrapper {
+#graphs-container {
+  padding: 2em 50px 0;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.loading-wrapper {
   margin-top: 60px;
   padding: 0 49%;
   width: 100%;
+  color: #ffffff;
 }
 
 .row-caption {
   font-size: 25px;
   font-family: Impact, Charcoal, sans-serif;
-  color: #000000;
+  color: #ffffff;
   margin-top: 1em;
   margin-bottom: 5px;
 }
 
-.information-cell {
+.information-card {
   font-size: 20px !important;
-  font-family: Impact, Charcoal, sans-serif;
+  font-family: Impact, Charcoal, serif;
   font-weight: lighter;
   color: #000000;
   min-width: 200px !important;
 }
 
-.line-chart {
+.chart-wrapper {
   margin-top: 2em;
-  color: #ffffff;
+  color: #fff;
+  margin-bottom: 2em;
+  background-color: #333;
+  text-align: center;
+  border-radius: 25px;
+  border: 2px solid #fff;
+  font-family: Impact, Charcoal, serif;
+  font-weight: lighter;
+}
+
+.recharts-default-tooltip {
+  background-color: #222 !important;
+  text-align: left !important;
 }
 
 #copyright {
@@ -67,8 +89,9 @@
   color: #ffffff;
   bottom: 0;
   height: 25px;
-  background-color: #000000;
+  background: #333;
   width: 100%;
   position: fixed;
   font-family: Impact, Charcoal, sans-serif;
+  border-top: 2px solid #fff;
 }

@@ -4,7 +4,7 @@ import {Card} from 'react-bootstrap';
 class InformationCard extends React.Component {
 
     render() {
-        return <Card className={"information-cell"} border={"light"} bg={"dark"} text={"white"}>
+        return <Card className={"information-card"} border={"light"} bg={"dark"} text={"white"}>
             <Card.Header>{this.props.label}</Card.Header>
             <Card.Body>
                 <Card.Text>

@@ -33,7 +33,7 @@ export default class Statistics extends React.Component {
 
     render() {
         if (this.state.current !== undefined && this.state.previous !== undefined) {
-            return <Container fluid id="main-container">
+            return <Container fluid id="statistics-container">
                 <div className="row-caption">General data valid on {new Date().toLocaleString()} </div>
                 <CardDeck className="row-with-data">
                     <InformationCard label="No. of tests:" data={this.state.current.numberOfTests}
@@ -49,7 +49,7 @@ export default class Statistics extends React.Component {
                 </CardDeck>
             </Container>
         } else {
-            return <div id={"loading-wrapper"}>
+            return <div className={"loading-wrapper"}>
                 <Spinner animation="border" role="status">
                     <span className="sr-only">Loading...</span>
                 </Spinner>
