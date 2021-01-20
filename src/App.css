@@ -60,7 +60,7 @@ body {
 #graphs-container {
   padding: 2em 50px 0;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 50px;
 }
 
 .loading-wrapper {
@@ -84,6 +84,7 @@ body {
   font-weight: lighter;
   color: #000000;
   min-width: 200px !important;
+  margin: 20px;
 }
 
 .chart-wrapper {
@@ -105,9 +106,10 @@ body {
 
 #copyright {
   text-align: center;
+  justify-content: center;
   color: #ffffff;
   bottom: 0;
-  height: 25px;
+  height: 50px;
   background: #333;
   width: 100%;
   position: fixed;

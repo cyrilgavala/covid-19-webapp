@@ -13,7 +13,7 @@ export default class CustomBarChart extends React.Component {
                     width={window.innerWidth - 100}
                     height={400}
                     data={this.props.chartData}
-                    margin={{top: 0, right: 30, left: 20, bottom: 0}}
+                    margin={{top: 0, right: 50, left: 20, bottom: 0}}
                 >
                     <XAxis dataKey={"date"} tick={{ fill: 'white' }} tickFormatter={o => new Date(o).toLocaleDateString()}/>
                     <YAxis yAxisId={0} tick={{ fill: 'white' }}/>
