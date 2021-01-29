@@ -16,7 +16,7 @@ export default class CustomLineChart extends React.Component {
                     margin={{top: 0, right: 50, left: 20, bottom: 0}}
                 >
                     <XAxis dataKey={"date"} tick={{ fill: 'white' }} tickFormatter={o => new Date(o).toLocaleDateString()}/>
-                    <YAxis yAxisId={0} tick={{ fill: 'white' }}/>
+                    <YAxis yAxisId={0} tick={{ fill: 'white' }}  domain={[40, 'auto']} allowDataOverflow/>
                     <Tooltip isAnimationActive={false} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
                     <Legend/>
                     <CartesianGrid stroke="#fff"/>
