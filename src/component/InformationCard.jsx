@@ -1,7 +1,7 @@
 import React from "react";
 import {Card} from 'react-bootstrap';
 
-class InformationCard extends React.Component {
+export default class InformationCard extends React.Component {
 
     render() {
         return <Card className={"information-card"} border={"light"} bg={"dark"} text={"white"}>
@@ -14,5 +14,3 @@ class InformationCard extends React.Component {
         </Card>
     }
 }
-
-export default InformationCard;

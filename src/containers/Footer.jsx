@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer() {
+export default function Footer() {
 
     return (
         <div id="copyright">
@@ -8,5 +8,3 @@ function Footer() {
         </div>
     )
 }
-
-export default Footer;

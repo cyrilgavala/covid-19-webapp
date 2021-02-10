@@ -31,8 +31,8 @@ export default class Graphs extends React.Component {
     render() {
         return <Container fluid id="graphs-container">
             <CustomLineChart title={"Positive percentage"} chartData={this.state.positivePercentageSeries} labels={[{label: "percentage", color: "cyan"}]}/>
-            <CustomBarChart title={"Daily tests"} chartData={this.state.dailyTests} labels={[{label: "tests", color: "cyan"}, {label: "confirmed", color: "blue"}]}/>
-            <CustomLineChart title={"Common data"} chartData={this.state.commonDataSeries} labels={[{label: "recovered", color: "blue"}, {label: "confirmed", color: "lightblue"}, {label: "active", color: "cyan"}]}/>
+            <CustomBarChart title={"Daily tests"} chartData={this.state.dailyTests} labels={[{label: "tests", color: "cyan"}, {label: "confirmed", color: "lightblue"}]}/>
+            <CustomLineChart title={"Common data"} chartData={this.state.commonDataSeries} labels={[{label: "recovered", color: "lightgreen"}, {label: "confirmed", color: "lightblue"}, {label: "active", color: "cyan"}]}/>
             <CustomLineChart title={"Deaths"} chartData={this.state.deathsSeries} labels={[{label: "deaths", color: "cyan"}]}/>
             <CustomBarChart title={"Deaths daily"} chartData={this.state.dailyDeaths} labels={[{label: "deaths", color: "cyan"}]}/>
         </Container>

@@ -1,5 +1,5 @@
 body {
-  background: url(images/blue-covid-banner.jpg) no-repeat center center fixed;
+  background: url(images/background.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -90,13 +90,16 @@ body {
 .chart-wrapper {
   margin-top: 2em;
   color: #fff;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  padding-bottom: 3em;
   background-color: #333;
   text-align: center;
   border-radius: 15px;
   border: 2px solid #fff;
   font-family: Impact, Charcoal, serif;
   font-weight: lighter;
+  height: 500px;
+  width: 100%;
 }
 
 .recharts-default-tooltip {
