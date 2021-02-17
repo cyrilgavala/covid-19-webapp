@@ -12,8 +12,6 @@ const apiUrl = "https://covid-19-api.herokuapp.com/"
 
 /** @namespace this.state.current.numberOfTests **/
 /** @namespace this.state.current.confirmed **/
-/** @namespace this.state.current.active **/
-/** @namespace this.state.current.recovered **/
 /** @namespace this.state.current.deaths **/
 export default class Statistics extends React.Component {
 
@@ -40,10 +38,6 @@ export default class Statistics extends React.Component {
                                      delta={this.state.current.numberOfTests - this.state.previous.numberOfTests}/>
                     <InformationCard label="Confirmed:" data={this.state.current.confirmed}
                                      delta={this.state.current.confirmed - this.state.previous.confirmed}/>
-                    <InformationCard label="Active:" data={this.state.current.active}
-                                     delta={this.state.current.active - this.state.previous.active}/>
-                    <InformationCard label="Recovered:" data={this.state.current.recovered}
-                                     delta={this.state.current.recovered - this.state.previous.recovered}/>
                     <InformationCard label="Deaths:" data={this.state.current.deaths}
                                      delta={this.state.current.deaths - this.state.previous.deaths}/>
                 </CardDeck>

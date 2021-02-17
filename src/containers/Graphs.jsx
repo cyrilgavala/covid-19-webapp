@@ -11,7 +11,6 @@ export default class Graphs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            commonDataSeries: [],
             deathsSeries: [],
             positivePercentageSeries: [],
             dailyTests: [],
@@ -21,7 +20,6 @@ export default class Graphs extends React.Component {
     }
 
     componentDidMount() {
-        this.loadSeriesData("data").then(res => this.setState({commonDataSeries: res.data}));
         this.loadSeriesData("deaths").then(res => this.setState({deathsSeries: res.data}));
         this.loadSeriesData("positivePercentage").then(res => this.setState({positivePercentageSeries: res.data}));
         this.loadSeriesData("testsDaily").then(res => this.setState({dailyTests: res.data}));
@@ -32,7 +30,6 @@ export default class Graphs extends React.Component {
         return <Container fluid id="graphs-container">
             <CustomLineChart title={"Positive percentage"} chartData={this.state.positivePercentageSeries} labels={[{label: "percentage", color: "cyan"}]}/>
             <CustomBarChart title={"Daily tests"} chartData={this.state.dailyTests} labels={[{label: "tests", color: "cyan"}, {label: "confirmed", color: "lightblue"}]}/>
-            <CustomLineChart title={"Common data"} chartData={this.state.commonDataSeries} labels={[{label: "recovered", color: "lightgreen"}, {label: "confirmed", color: "lightblue"}, {label: "active", color: "cyan"}]}/>
             <CustomLineChart title={"Deaths"} chartData={this.state.deathsSeries} labels={[{label: "deaths", color: "cyan"}]}/>
             <CustomBarChart title={"Deaths daily"} chartData={this.state.dailyDeaths} labels={[{label: "deaths", color: "cyan"}]}/>
         </Container>
