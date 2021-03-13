@@ -21,7 +21,7 @@ export default function CustomChart(props) {
       return "Statistics of " + props.querySuffix + " loaded"
     }
     loadData().then(r => console.log(r))
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!isLoading) {
     let graph
