@@ -10,14 +10,33 @@ export default function CustomChart(props) {
   const [data, setData] = useState([])
   const [isLoading, setLoading] = useState(true)
 
-  async function loadSeriesData(suffix) {
-    return axios.get(apiUrl + 'series/' + suffix);
+  async function loadSeriesData(suffix, range) {
+
+    function calculateParams(range) {
+      const endDate = new Date(), startDate = new Date();
+      endDate.setUTCHours(0, 0, 0, 0);
+      startDate.setUTCHours(0, 0, 0, 0);
+      if ("all" === range) {
+        return {
+          startDate: new Date(2020, 10, 26).toISOString(),
+          endDate: endDate.toISOString()
+        }
+      } else {
+        startDate.setDate(startDate.getDate() - range);
+        return {
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString()
+        }
+      }
+    }
+
+    setLoading(false)
+    return axios.get(apiUrl + 'series/' + suffix, {params: calculateParams(range)});
   }
 
   useEffect(() => {
     const loadData = async () => {
-      await loadSeriesData(props.querySuffix).then(res => setData(res.data))
-      setLoading(false)
+      await loadSeriesData(props.querySuffix, props.range).then(res => setData(res.data))
       return "Statistics of " + props.querySuffix + " loaded"
     }
     loadData().then(r => console.log(r))
@@ -28,15 +47,16 @@ export default function CustomChart(props) {
     let graphElements
     const innerElements = []
     innerElements.push(<XAxis dataKey={"date"} tick={{fill: 'white'}} tickFormatter={o => new Date(o).toLocaleDateString()}/>)
-    innerElements.push(<YAxis yAxisId={0} tick={{fill: 'white'}} domain={[40, 'auto']} allowDataOverflow/>)
-    innerElements.push(<Tooltip isAnimationActive={false} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>)
+    innerElements.push(<YAxis yAxisId={0} tick={{fill: 'white'}} type={"number"} domain={['auto', 'dataMax+30']} allowDataOverflow/>)
+    innerElements.push(<Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>)
     innerElements.push(<Legend/>)
     innerElements.push(<CartesianGrid stroke="#fff"/>)
     if ("bar" === props.type) {
       graphElements = props.labels.map(i => {
         return <Bar key={i.label} type="monotone" dataKey={i.label} fill={i.color} yAxisId={0}/>
       })
-      graph = <BarChart width={window.innerWidth - 100} height={400} data={data} margin={{top: 0, right: 50, left: 20, bottom: 0}}>
+      graph = <BarChart width={window.innerWidth - 100} height={400} data={data}
+                        margin={{top: 0, right: 50, left: 20, bottom: 0}}>
         {innerElements}
         {graphElements}
       </BarChart>
@@ -45,7 +65,8 @@ export default function CustomChart(props) {
       graphElements = props.labels.map(i => {
         return <Line key={i.label} type="monotone" dataKey={i.label} strokeWidth={3} stroke={i.color} yAxisId={0}/>
       })
-      graph = <LineChart width={window.innerWidth - 100} height={400} data={data} margin={{top: 0, right: 50, left: 20, bottom: 0}}>
+      graph = <LineChart width={window.innerWidth - 100} height={400} data={data}
+                         margin={{top: 0, right: 50, left: 20, bottom: 0}}>
         {innerElements}
         {graphElements}
       </LineChart>
