@@ -1,6 +1,7 @@
 body {
     background: url(images/background.jpg) no-repeat center center fixed;
     background-size: cover;
+    min-width: 600px;
 }
 
 .App {
@@ -9,37 +10,25 @@ body {
 
 #app-header {
     height: 50px;
-    background-color: #333;
+    background-color: #111;
     width: 100%;
-    float: left;
     position: fixed;
     top: 0;
-    font-family: Impact, Charcoal, sans-serif;
-    font-weight: bold;
-    color: #ffffff;
-    z-index: 10;
+    z-index: 100;
     border-bottom: 2px solid #fff;
     display: flex;
-    justify-content: center;
     align-items: center;
+    min-width: 600px;
 }
 
-@media all and (max-width: 3000px) {
-    #app-header {
-        font-size: 2em;
-    }
-}
-
-@media all and (max-width: 700px) {
-    #app-header {
-        font-size: 1.5em;
-    }
-}
-
-@media all and (max-width: 300px) {
-    #app-header {
-        font-size: 1em;
-    }
+#app-header p {
+    position: fixed;
+    left: 70px;
+    top: 0;
+    font-family: Impact, Charcoal, sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    padding-top: 10px;
 }
 
 #app-header-logo {
@@ -55,13 +44,7 @@ body {
     margin-top: 70px;
     padding: 0 50px;
     width: 100%;
-}
-
-#graphs-container {
-    padding: 20px 50px;
-    width: 100%;
-    margin-bottom: 50px;
-    display: grid;
+    margin-bottom: 20px;
 }
 
 .loading-wrapper {
@@ -86,6 +69,23 @@ body {
     color: #000000;
     min-width: 200px !important;
     margin: 20px;
+    background-color: rgba(0,0,0,.5) !important;
+}
+
+#graphs-container {
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+    display: grid;
+}
+
+#graphs-container p {
+    font-size: 20px !important;
+    font-family: Impact, Charcoal, serif;
+    font-weight: lighter;
+    color: #fff;
+    width: 120px;
 }
 
 .chart-wrapper {
@@ -101,35 +101,66 @@ body {
     font-weight: lighter;
     height: 500px;
     width: 100%;
+    background-color: rgba(0,0,0,.5);
 }
 
-.dropright {
+#graphs-select-date-range {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+}
+
+#graphs-select-date-range p, #graphs-select-date-range div {
+    padding-top: 10px;
+    align-items: baseline;
+}
+
+.dropdown {
     float: left;
     padding-top: 20px;
     display: flex;
-    width: 100%;
     font-family: Impact, Charcoal, serif;
+    width: 200px;
 }
 
-.dropright button {
-    background-color: #333;
+.dropdown button, .dropdown button:hover {
+    background-color: rgba(0,0,0,.5) !important;
     border: 2px solid #fff;
 }
 
+.dropdown-menu {
+    background-color: #111 !important;
+}
+
+.dropdown-item {
+    color: #fff !important;
+}
+
+.dropdown-item:hover {
+    color: #111 !important;
+}
+
 .recharts-default-tooltip {
-    background-color: #222 !important;
+    background-color: #111 !important;
     text-align: left !important;
 }
 
 #copyright {
-    text-align: center;
+    text-align: right;
     justify-content: center;
-    color: #ffffff;
+    color: #aaa;
     bottom: 0;
-    height: 50px;
-    background: #333;
+    right: 0;
+    height: 25px;
+    padding-top: 5px;
+    padding-right: 10px;
+    background: #111;
     width: 100%;
+    tab-size: 16;
     position: fixed;
     font-family: Impact, Charcoal, sans-serif;
+    font-size: 13px;
     border-top: 2px solid #fff;
+    min-width: 600px;
 }

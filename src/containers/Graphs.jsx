@@ -58,17 +58,20 @@ export default function Graphs() {
 
   if (!isLoading) {
     return <Container fluid id="graphs-container">
-      <Dropdown onSelect={value => reloadData(value)} drop={"right"}>
-        <Dropdown.Toggle variant="secondary" id="select-date-range">
-          Select date range (Current: {"all" === range ? "All)" : "Last " + range + " days)"}
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item eventKey={"all"}>All</Dropdown.Item>
-          <Dropdown.Item eventKey={90}>Last 90 days</Dropdown.Item>
-          <Dropdown.Item eventKey={30}>Last 30 days</Dropdown.Item>
-          <Dropdown.Item eventKey={7}>Last 7 days</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <Container id={"graphs-select-date-range"}>
+        <p>Select range: </p>
+        <Dropdown onSelect={value => reloadData(value)} drop={"down"}>
+          <Dropdown.Toggle variant="secondary" id="select-date-range">
+            {"all" === range ? "All" : "Last " + range + " days"}
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item eventKey={"all"}>All</Dropdown.Item>
+            <Dropdown.Item eventKey={90}>Last 90 days</Dropdown.Item>
+            <Dropdown.Item eventKey={30}>Last 30 days</Dropdown.Item>
+            <Dropdown.Item eventKey={7}>Last 7 days</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Container>
       <CustomChart key={"pp_" + range} type={"line"} title={"Positive percentage"}
                    labels={[{label: "percentage", color: "cyan"}]} data={posPercentage}/>
       <CustomChart key={"dt_" + range} type={"bar"} title={"Daily tests"} data={dailyTests}

@@ -2,7 +2,7 @@ import {Card} from 'react-bootstrap';
 
 export default function InformationCard(props) {
 
-  return <Card className={"information-card"} border={"light"} bg={"dark"} text={"white"}>
+  return <Card className={"information-card"} border={"light"} text={"white"}>
     <Card.Header>{props.label}</Card.Header>
     <Card.Body>
       <Card.Text>
