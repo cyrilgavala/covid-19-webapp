@@ -7,7 +7,7 @@ export default function CustomChart(props) {
   let graphElements
   const innerElements = []
   innerElements.push(<XAxis dataKey={"date"} tick={{fill: 'white'}} tickFormatter={o => new Date(o).toLocaleDateString()}/>)
-  innerElements.push(<YAxis yAxisId={0} tick={{fill: 'white'}} type={"number"} domain={['auto', 'dataMax+30']} allowDataOverflow/>)
+  innerElements.push(<YAxis yAxisId={0} tick={{fill: 'white'}} type={"number"} domain={['auto', 'dataMax+25']}/>)
   innerElements.push(<Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>)
   innerElements.push(<Legend/>)
   innerElements.push(<CartesianGrid stroke="#fff"/>)

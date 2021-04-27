@@ -39,19 +39,14 @@ export default function Graphs() {
   }
 
   function calculateParams(range) {
-    const endDate = new Date(), startDate = new Date();
-    endDate.setUTCHours(0, 0, 0, 0);
-    startDate.setUTCHours(0, 0, 0, 0);
     if ("all" === range) {
-      return {
-        startDate: new Date(2020, 10, 26).toISOString(),
-        endDate: endDate.toISOString()
-      }
+      return {}
     } else {
+      const startDate = new Date();
+      startDate.setUTCHours(0, 0, 0, 0);
       startDate.setDate(startDate.getDate() - range);
       return {
         startDate: startDate.toISOString(),
-        endDate: endDate.toISOString()
       }
     }
   }
