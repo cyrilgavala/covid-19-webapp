@@ -51,9 +51,7 @@ export default function Statistics() {
     </Container>
   } else {
     return <div className={"loading-wrapper"}>
-      <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>
+      <Spinner animation="border" role="status" alt={"Loading..."}/>
     </div>
   }
 }
