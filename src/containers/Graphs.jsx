@@ -2,8 +2,7 @@ import {Container, Dropdown, Spinner} from 'react-bootstrap';
 import CustomChart from "../component/CustomChart";
 import {useEffect, useState} from "react";
 import axios from "axios";
-
-const apiUrl = "https://covid-19-api.herokuapp.com/"
+import properties from "../config/properties";
 
 export default function Graphs() {
 
@@ -35,7 +34,7 @@ export default function Graphs() {
   }
 
   async function loadSeriesData(suffix, params) {
-    return axios.get(apiUrl + 'series/' + suffix, {params: params});
+    return axios.get(properties.apiUrl + 'series/' + suffix, {params: params});
   }
 
   function calculateParams(range) {

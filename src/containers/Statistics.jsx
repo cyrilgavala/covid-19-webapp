@@ -2,13 +2,13 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {CardDeck, Container, Spinner} from 'react-bootstrap';
 import InformationCard from "../component/InformationCard";
+import properties from "../config/properties"
 
 const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
 const yesterday = new Date();
 yesterday.setUTCHours(0, 0, 0, 0);
 yesterday.setDate(yesterday.getDate() - 1);
-const apiUrl = "https://covid-19-api.herokuapp.com/"
 
 /** @namespace current.numberOfTests **/
 /** @namespace current.confirmed **/
@@ -20,7 +20,7 @@ export default function Statistics() {
   const [previous, setPrevious] = useState({})
 
   async function loadDataForDay(date) {
-    return axios.get(apiUrl + 'stats/day', {
+    return axios.get(properties.apiUrl + 'stats/day', {
       params: {
         date: date.toISOString()
       }
