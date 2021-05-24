@@ -6,6 +6,8 @@ body {
 
 .App {
     height: 100%;
+    width: 100%;
+    font-family: IBM Plex, serif;
 }
 
 #app-header {
@@ -18,16 +20,15 @@ body {
     border-bottom: 2px solid #fff;
     display: flex;
     align-items: center;
-    min-width: 600px;
 }
 
 #app-header p {
     position: fixed;
     left: 70px;
     top: 0;
-    font-family: Impact, Charcoal, sans-serif;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: bold;
     padding-top: 10px;
 }
 
@@ -56,21 +57,18 @@ body {
 
 .row-caption {
     font-size: 25px;
-    font-family: Impact, Charcoal, sans-serif;
     color: #ffffff;
     margin-top: 1em;
     margin-bottom: 5px;
 }
 
 .row-with-data {
-    display: inline-flex;
+    display: flex;
     width: 100%;
 }
 
 .information-card {
     font-size: 20px !important;
-    font-family: Impact, Charcoal, serif;
-    font-weight: lighter;
     color: #000000;
     min-width: 200px !important;
     margin: 20px;
@@ -88,7 +86,6 @@ body {
 
 #graphs-container p {
     font-size: 20px !important;
-    font-family: Impact, Charcoal, serif;
     font-weight: lighter;
     color: #fff;
     width: 120px;
@@ -103,8 +100,6 @@ body {
     text-align: center;
     border-radius: 15px;
     border: 2px solid #fff;
-    font-family: Impact, Charcoal, serif;
-    font-weight: lighter;
     height: 500px;
     width: 100%;
     background-color: rgba(0,0,0,.5);
@@ -126,7 +121,6 @@ body {
     float: left;
     padding-top: 20px;
     display: flex;
-    font-family: Impact, Charcoal, serif;
     width: 200px;
 }
 
@@ -165,7 +159,6 @@ body {
     width: 100%;
     tab-size: 16;
     position: fixed;
-    font-family: Impact, Charcoal, sans-serif;
     font-size: 12px;
     border-top: 2px solid #fff;
     min-width: 600px;
