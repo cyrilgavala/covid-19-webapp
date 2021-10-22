@@ -7,18 +7,18 @@ export default function CustomLineChart(props) {
                      yAxisId={index % 2 === 0 ? "left" : "right"} dot={false}/>
     })
     const yAxis = props.labels.map((item, index) => {
-        return <YAxis yAxisId={index % 2 === 0 ? "left" : "right"} tick={{fill: item.color}} type={"number"} domain={['auto', 'dataMax+25']}
-                      orientation={index % 2 === 0 ? "left" : "right"} scale={"auto"}/>
+        return <YAxis key={index % 2 === 0 ? "left" : "right"} yAxisId={index % 2 === 0 ? "left" : "right"} tick={{fill: item.color}}
+                      type={"number"} domain={['auto', 'dataMax+25']} orientation={index % 2 === 0 ? "left" : "right"} scale={"auto"}/>
     })
 
     return <div className={"chart-wrapper"}>
         <h3 className={"chart-title"}>{props.title}</h3>
         <ResponsiveContainer>
             <LineChart width={window.innerWidth - 100} height={400} data={props.data} margin={{top: 0, right: 50, left: 20, bottom: 0}}>
-                <XAxis dataKey={"date"} tick={{fill: 'white'}} tickFormatter={o => new Date(o).toLocaleDateString()}/>
+                <XAxis dataKey={"date"} tick={{fill: '#101726'}} tickFormatter={o => new Date(o).toLocaleDateString()}/>
                 <Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
                 <Legend/>)
-                <CartesianGrid stroke="#fff"/>
+                <CartesianGrid stroke="#101726"/>
                 {yAxis}
                 {graphElements}
             </LineChart>

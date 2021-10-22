@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {CardDeck, Container, Spinner} from 'react-bootstrap';
+import {Container, Spinner} from 'react-bootstrap';
 import InformationCard from "../component/InformationCard";
 import properties from "../config/properties"
 
@@ -38,16 +38,13 @@ export default function Statistics() {
   }, [])
 
   if (!isLoading) {
-    return <Container fluid id="statistics-container">
-      <div className="row-caption">General data valid on {new Date().toLocaleString()} </div>
-      <CardDeck className="row-with-data">
+    return <Container id="statistics-container">
         <InformationCard label="No. of tests:" data={current.numberOfTests}
                          delta={current.numberOfTests - previous.numberOfTests}/>
         <InformationCard label="Confirmed:" data={current.confirmed}
                          delta={current.confirmed - previous.confirmed}/>
         <InformationCard label="Deaths:" data={current.deaths}
                          delta={current.deaths - previous.deaths}/>
-      </CardDeck>
     </Container>
   } else {
     return <div className={"loading-wrapper"}>
