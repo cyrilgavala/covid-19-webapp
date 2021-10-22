@@ -8,9 +8,8 @@ export default function Graphs() {
 
 	const [range, setRange] = useState("all")
 	const [posPercentage, setPosPercentage] = useState([])
-	const [deaths, setDeaths] = useState([])
+	const [deathsData, setDeathsData] = useState([])
 	const [dailyTests, setDailyTests] = useState([])
-	const [dailyDeaths, setDailyDeaths] = useState([])
 	const [isLoading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -27,8 +26,14 @@ export default function Graphs() {
 		const params = calculateParams(range)
 		await loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
 		await loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
-		await loadSeriesData("deaths", params).then(res => setDeaths(res.data))
-		await loadSeriesData("deathsDaily", params).then(res => setDailyDeaths(res.data))
+		const deathsTotal = await loadSeriesData("deaths", params).then(res => {return res.data})
+		const deathsDaily = await loadSeriesData("deathsDaily", params).then(res => {return res.data})
+
+		setDeathsData(deathsDaily.map((item, index) => {
+			return {deathsDaily: item.deaths, deathsTotal: deathsTotal[index].deaths, date: item.date}
+		}))
+
+
 		setLoading(false)
 		return "Statistical data loaded"
 	}
@@ -70,9 +75,8 @@ export default function Graphs() {
 			                 data={posPercentage}/>
 			<CustomLineChart key={"dt_" + range} title={"Daily tests"} data={dailyTests}
 			                 labels={[{label: "tests", color: "cyan"}, {label: "confirmed", color: "lightblue"}]}/>
-			<CustomLineChart key={"d_" + range} title={"Deaths"} labels={[{label: "deaths", color: "cyan"}]} data={deaths}/>
-			<CustomLineChart key={"dd_" + range} title={"Deaths daily"} labels={[{label: "deaths", color: "cyan"}]}
-			                 data={dailyDeaths}/>
+			<CustomLineChart key={"d_" + range} title={"Deaths"} labels={[{label: "deathsDaily", color: "cyan"}, {label: "deathsTotal", color: "lightblue"}]}
+							 data={deathsData}/>
 		</Container>
 	} else {
 		return <div className={"loading-wrapper"}>

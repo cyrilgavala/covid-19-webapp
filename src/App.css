@@ -12,12 +12,12 @@ body {
 
 #app-header {
     height: 50px;
-    background-color: #111;
+    background-color: #293241;
     width: 100%;
     position: fixed;
     top: 0;
     z-index: 100;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #e0fbfc;
     display: flex;
     align-items: center;
 }
@@ -26,7 +26,7 @@ body {
     position: fixed;
     left: 70px;
     top: 0;
-    color: #ffffff;
+    color: #e0fbfc;
     font-size: 17px;
     font-weight: bold;
     padding-top: 10px;
@@ -42,9 +42,10 @@ body {
 }
 
 #statistics-container {
-    margin-top: 70px;
-    padding: 0 50px;
-    width: 100%;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-left: 1%;
+    width: 90%;
     margin-bottom: 20px;
 }
 
@@ -52,54 +53,53 @@ body {
     margin-top: 60px;
     padding: 0 49%;
     width: 100%;
-    color: #ffffff;
+    color: #e0fbfc;
 }
 
 .row-caption {
     font-size: 25px;
-    color: #ffffff;
+    color: #e0fbfc;
     margin-top: 1em;
     margin-bottom: 5px;
 }
 
 .row-with-data {
+    width:100%;
     display: flex;
-    width: 100%;
+    justify-content: center;
 }
 
 .information-card {
     font-size: 20px !important;
     color: #000000;
     min-width: 200px !important;
-    margin: 20px;
+    margin-right: 1%;
+    width: 32%;
     background-color: rgba(0,0,0,.5) !important;
-    width: 33%;
 }
 
 #graphs-container {
-    padding-left: 50px;
-    padding-right: 50px;
-    width: 100%;
-    margin-bottom: 20px;
-    display: grid;
+    padding: 20px;
+    width: 90%;
+    display: block;
 }
 
 #graphs-container p {
     font-size: 20px !important;
     font-weight: lighter;
-    color: #fff;
+    color: #e0fbfc;
     width: 120px;
 }
 
 .chart-wrapper {
     margin-top: 2em;
-    color: #fff;
+    color: #e0fbfc;
     margin-bottom: 1em;
     padding-bottom: 3em;
-    background-color: #333;
+    background-color: #293241;
     text-align: center;
     border-radius: 15px;
-    border: 2px solid #fff;
+    border: 2px solid #e0fbfc;
     height: 500px;
     width: 100%;
     background-color: rgba(0,0,0,.5);
@@ -126,7 +126,7 @@ body {
 
 .dropdown button, .dropdown button:hover {
     background-color: rgba(0,0,0,.5) !important;
-    border: 2px solid #fff;
+    border: 2px solid #e0fbfc;
 }
 
 .dropdown-menu {
@@ -134,7 +134,7 @@ body {
 }
 
 .dropdown-item {
-    color: #fff !important;
+    color: #e0fbfc !important;
 }
 
 .dropdown-item:hover {
@@ -149,17 +149,17 @@ body {
 #copyright {
     text-align: right;
     justify-content: center;
-    color: #aaa;
+    color: #e0fbfc;
     bottom: 0;
     right: 0;
     height: 25px;
     padding-top: 5px;
     padding-right: 10px;
-    background: #111;
+    background: #293241;
     width: 100%;
     tab-size: 16;
     position: fixed;
     font-size: 12px;
-    border-top: 2px solid #fff;
+    border-top: 2px solid #e0fbfc;
     min-width: 600px;
 }
