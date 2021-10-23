@@ -18,29 +18,17 @@
     width: 100%;
     position: fixed;
     top: 0;
-    display: flex;
-    justify-content: center;
     border-bottom: #d9bba9 1px solid;
     z-index: 300;
 }
 
 #app-header p {
-    position: fixed;
-    left: 70px;
-    top: 0;
+    text-align: right;
+    padding-right: 10px;
     color: #d9bba9;
     font-size: 17px;
     font-weight: bold;
     padding-top: 10px;
-}
-
-#app-header-logo {
-    height: 50px;
-    padding-right: 20px;
-    position: fixed;
-    top: 0;
-    left: 10px;
-    filter: invert();
 }
 
 #statistics-container {
@@ -49,17 +37,19 @@
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 0;
 }
 
 .card {
     font-size: 20px !important;
     color: #000000;
-    width: 32%;
     background-color: #293241 !important;
     border: none !important;
     border-radius: unset !important;
     text-align: center;
     font-weight: bold;
+    width: 33.33333%;
 }
 
 .card-header {
@@ -83,11 +73,12 @@
 #date-range-dropdown {
     position: fixed;
     left: 0;
-    top: 50px;
+    top: 10px;
     margin: 0;
     padding: 0;
     border-radius: unset;
     width: 50px;
+    z-index: 300;
 }
 
 #select-date-range {
@@ -115,7 +106,7 @@
 
 #graphs-container {
     width: 90%;
-    display: block;
+    display: grid;
     margin-bottom: 50px;
 }
 
@@ -130,6 +121,12 @@
     width: 100%;
     background-color: #a6a6a6;
     z-index: 100 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.chart-title {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .recharts-default-tooltip {
