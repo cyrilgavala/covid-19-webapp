@@ -6,7 +6,7 @@ export default function InformationCard(props) {
     <Card.Header >{props.label}</Card.Header>
     <Card.Body>
       <Card.Text>
-        {props.data} ({props.delta > 0 ? " +" + props.delta : props.delta})
+        {props.data} ({props.delta > 0 ? " +" + props.delta : props.delta} )
       </Card.Text>
     </Card.Body>
   </Card>

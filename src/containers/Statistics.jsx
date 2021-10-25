@@ -38,7 +38,7 @@ export default function Statistics() {
   }, [])
 
   if (!isLoading) {
-    return <Container id="statistics-container">
+    return <Container id="statistics-container" className={"col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12"}>
         <InformationCard label="No. of tests:" data={current.numberOfTests}
                          delta={current.numberOfTests - previous.numberOfTests}/>
         <InformationCard label="Confirmed:" data={current.confirmed}
