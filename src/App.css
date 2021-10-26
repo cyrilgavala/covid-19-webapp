@@ -1,14 +1,14 @@
+html {
+    background-color: #293241;
+}
+
 .App {
     height: 100%;
     width: 100%;
     font-family: Palatino, serif !important;
     background-image: linear-gradient(to bottom right, #d9bba9 0%, #293241 50%, #73303c 100%);
     background-size: 200% 200%;
-    animation: movingGradient 20s linear infinite alternate;
-}
-
-html {
-    background-color: #293241;
+    animation: movingGradient 10s linear infinite alternate;
 }
 
 @keyframes movingGradient {
@@ -134,7 +134,7 @@ html {
     border-radius: 15px;
     height: 500px;
     width: 100%;
-    background-color: #a6a6a6;
+    background-color: rgba(243, 234, 229, .6);
     z-index: 100 !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -145,9 +145,10 @@ html {
 }
 
 .recharts-default-tooltip {
-    background-color: #a6a6a6 !important;
+    background-color: #f3eae5 !important;
     text-align: left !important;
     border: #101726 1px solid !important;
+    color: #101726;
 }
 
 .recharts-wrapper, .recharts-surface {
