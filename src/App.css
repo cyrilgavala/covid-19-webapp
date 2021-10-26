@@ -1,8 +1,23 @@
-.App, html {
+.App {
     height: 100%;
     width: 100%;
     font-family: Palatino, serif !important;
-    background-color: #404654;
+    background-image: linear-gradient(to bottom right, #d9bba9 0%, #293241 50%, #73303c 100%);
+    background-size: 200% 200%;
+    animation: movingGradient 20s linear infinite alternate;
+}
+
+html {
+    background-color: #293241;
+}
+
+@keyframes movingGradient {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 100%;
+    }
 }
 
 .loading-wrapper {
