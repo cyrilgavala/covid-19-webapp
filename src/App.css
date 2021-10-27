@@ -1,14 +1,6 @@
-html {
-    background-color: #293241;
-}
-
-.App {
-    height: 100%;
-    width: 100%;
-    font-family: Palatino, serif !important;
-    background-image: linear-gradient(to bottom right, #d9bba9 0%, #293241 50%, #73303c 100%);
-    background-size: 200% 200%;
-    animation: movingGradient 10s linear infinite alternate;
+body {
+    background-color: #293241 !important;
+    height: 100vh;
 }
 
 @keyframes movingGradient {
@@ -18,6 +10,15 @@ html {
     to {
         background-position: 100% 100%;
     }
+}
+
+.App {
+    height: 100%;
+    width: 100%;
+    font-family: Palatino, serif !important;
+    background-image: linear-gradient(to bottom right, #d9bba9 0%, #293241 50%, #73303c 100%);
+    background-size: 200% 200%;
+    animation: movingGradient 10s linear infinite alternate;
 }
 
 .loading-wrapper {
@@ -56,12 +57,13 @@ html {
     padding: 0;
 }
 
+#statistics-container:first-child .card-body {
+    border-radius: 15px !important;
+}
+
 .card {
     font-size: 20px !important;
-    color: #000000;
-    background-color: #293241 !important;
     border: none !important;
-    border-radius: unset !important;
     text-align: center;
     font-weight: bold;
     width: 33.33333%;
@@ -72,13 +74,12 @@ html {
     border-radius: unset !important;
     background-color: #101726 !important;
     height: 30px;
-    padding: .2rem 1rem !important;
     color: #d9bba9;
+    padding: 5px !important;
 }
 
 .card-body {
     border: none !important;
-    border-radius: unset !important;
     background-color: #d9bba9 !important;
     height: 30px;
     padding: .2rem 1rem !important;
@@ -121,27 +122,28 @@ html {
 
 #graphs-container {
     width: 90%;
-    display: grid;
-    margin-bottom: 50px;
+    padding-bottom: 25px;
 }
 
 .chart-wrapper {
-    margin-top: 2em;
     color: #101726;
-    margin-bottom: 1em;
-    padding-bottom: 3em;
     text-align: center;
     border-radius: 15px;
-    height: 500px;
+    height: 400px;
     width: 100%;
     background-color: rgba(243, 234, 229, .6);
     z-index: 100 !important;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .chart-title {
+    color: #101726;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 21px;
 }
 
 .recharts-default-tooltip {
@@ -149,10 +151,6 @@ html {
     text-align: left !important;
     border: #101726 1px solid !important;
     color: #101726;
-}
-
-.recharts-wrapper, .recharts-surface {
-    z-index: 100 !important;
 }
 
 #copyright {

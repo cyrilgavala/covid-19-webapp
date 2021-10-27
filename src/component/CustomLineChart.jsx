@@ -12,12 +12,12 @@ export default function CustomLineChart(props) {
     })
 
     return <div className={"chart-wrapper"}>
-        <h3 className={"chart-title"}>{props.title}</h3>
-        <ResponsiveContainer>
-            <LineChart width={window.innerWidth - 100} height={300} data={props.data} margin={{top: 0, right: 50, left: 20, bottom: 20}}>
+        <div className={"chart-title"}>{props.title}</div>
+        <ResponsiveContainer minWidth={800}>
+            <LineChart width={window.innerWidth - 100} height={300} data={props.data} margin={{top: 0, right: 50, left: 50, bottom: 0}}>
                 <XAxis dataKey={"date"} tick={{fill: '#101726'}} tickFormatter={o => new Date(o).toLocaleDateString()}/>
                 <Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
-                <Legend/>)
+                <Legend height={30}/>)
                 <CartesianGrid stroke="#101726"/>
                 {yAxis}
                 {graphElements}
