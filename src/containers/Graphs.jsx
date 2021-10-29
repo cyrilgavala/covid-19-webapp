@@ -1,8 +1,9 @@
-import {Container, Dropdown, Spinner} from 'react-bootstrap';
+import {Dropdown} from 'react-bootstrap';
 import CustomLineChart from "../component/CustomLineChart";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import properties from "../config/properties";
+import Spinner from "../component/Spinner";
 
 export default function Graphs() {
 
@@ -55,7 +56,7 @@ export default function Graphs() {
     }
 
     if (!isLoading) {
-        return <Container fluid id="graphs-container">
+        return <div id="graphs-container">
             <Dropdown id={"date-range-dropdown"} onSelect={value => reloadData(value)} drop={"down"}>
                 <Dropdown.Toggle variant="secondary" id="select-date-range">
                     {"all" === range ? "All" : "Last " + range + " days"}
@@ -67,16 +68,24 @@ export default function Graphs() {
                     <Dropdown.Item eventKey={7}>Last 7 days</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <CustomLineChart key={"pp_" + range} title={"Positive percentage"} labels={[{label: "percentage", color: "#4c6353"}]}
+            <CustomLineChart syncId="1"
+                             key={"pp_" + range}
+                             title={"Positive percentage"}
+                             labels={[{label: "percentage", color: "#4c6353"}]}
                              data={posPercentage}/>
-            <CustomLineChart key={"dt_" + range} title={"Daily tests"} data={dailyTests}
+            <CustomLineChart syncId="1"
+                             key={"dt_" + range}
+                             title={"Daily tests"}
+                             data={dailyTests}
                              labels={[{label: "tests", color: "#4c6353"}, {label: "confirmed", color: "#73303c"}]}/>
-            <CustomLineChart key={"d_" + range} title={"Deaths"} labels={[{label: "deathsDaily", color: "#4c6353"}, {label: "deathsTotal", color: "#73303c"}]}
+            <CustomLineChart key={"d_" + range}
+                             title={"Deaths"}
+                             labels={[{label: "deathsDaily", color: "#4c6353"}, {label: "deathsTotal", color: "#73303c"}]}
                              data={deathsData}/>
-        </Container>
+        </div>
     } else {
         return <div className={"loading-wrapper"}>
-            <Spinner animation="border" role="status" alt={"Loading..."}/>
+            <Spinner/>
         </div>
     }
 }

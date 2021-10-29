@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {Container, Spinner} from 'react-bootstrap';
 import InformationCard from "../component/InformationCard";
 import properties from "../config/properties"
+import Spinner from "../component/Spinner";
 
 const today = new Date();
 today.setUTCHours(0, 0, 0, 0);
@@ -38,17 +38,17 @@ export default function Statistics() {
   }, [])
 
   if (!isLoading) {
-    return <Container id="statistics-container" className={"col-xl-9 col-lg-9 col-md-12 col-sm-12 col-xs-12"}>
+    return <div id="statistics-container">
         <InformationCard label="No. of tests:" data={current.numberOfTests}
                          delta={current.numberOfTests - previous.numberOfTests}/>
         <InformationCard label="Confirmed:" data={current.confirmed}
                          delta={current.confirmed - previous.confirmed}/>
         <InformationCard label="Deaths:" data={current.deaths}
                          delta={current.deaths - previous.deaths}/>
-    </Container>
+    </div>
   } else {
     return <div className={"loading-wrapper"}>
-      <Spinner animation="border" role="status" alt={"Loading..."}/>
+      <Spinner/>
     </div>
   }
 }
