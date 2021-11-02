@@ -4,6 +4,8 @@ body {
     font-family: Palatino, serif !important;
     background-image: linear-gradient(to bottom right, #d9bba9 0%, #293241 50%, #73303c 100%);
     align-content: center;
+    min-width: 900px !important;
+    width: 100%;
 }
 
 .App {
@@ -98,10 +100,10 @@ body {
 
 #graphs-container {
     width: 100%;
-    margin-top: 120px;
-    margin-bottom: 25px;
+    height: 100%;
+    margin-top: 125px;
     display: grid;
-    padding-top: 10px;
+    margin-bottom: 20px;
 }
 
 .chart-wrapper {
@@ -113,10 +115,9 @@ body {
     background-color: rgba(243, 234, 229, .6);
     z-index: 100;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding-bottom: 50px;
-    margin-bottom: 20px;
     justify-self: center;
-    justify-content: center;
+    padding-bottom: 70px;
+    margin-bottom: 15px;
 }
 
 .chart-title {
@@ -125,6 +126,7 @@ body {
     padding-bottom: 10px;
     font-weight: bold;
     font-size: 21px;
+    width: 100%;
 }
 
 .recharts-default-tooltip {
