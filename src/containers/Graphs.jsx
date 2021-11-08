@@ -59,13 +59,15 @@ export default function Graphs() {
         return <div id="graphs-container">
             <Dropdown id={"date-range-dropdown"} onSelect={value => reloadData(value)} drop={"down"}>
                 <Dropdown.Toggle variant="secondary" id="select-date-range">
-                    {"all" === range ? "All" : "Last " + range + " days"}
+                    {"Select range"}
                 </Dropdown.Toggle>
                 <Dropdown.Menu id={"date-range-dropdown-menu"}>
                     <Dropdown.Item eventKey={"all"}>All</Dropdown.Item>
-                    <Dropdown.Item eventKey={90}>Last 90 days</Dropdown.Item>
-                    <Dropdown.Item eventKey={30}>Last 30 days</Dropdown.Item>
-                    <Dropdown.Item eventKey={7}>Last 7 days</Dropdown.Item>
+                    <Dropdown.Item eventKey={365}>Last year</Dropdown.Item>
+                    <Dropdown.Item eventKey={180}>Last half year</Dropdown.Item>
+                    <Dropdown.Item eventKey={90}>Last 3 months</Dropdown.Item>
+                    <Dropdown.Item eventKey={30}>Last month</Dropdown.Item>
+                    <Dropdown.Item eventKey={7}>Last week</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
             <CustomLineChart syncId="1"
