@@ -70,18 +70,11 @@ export default function Graphs() {
                     <Dropdown.Item eventKey={7}>Last week</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <CustomLineChart syncId="1"
-                             key={"pp_" + range}
-                             title={"Positive percentage"}
-                             labels={[{label: "percentage", color: "#4c6353"}]}
+            <CustomLineChart syncId="1" key={"pp_" + range} title={"Positive percentage"} labels={[{label: "percentage", color: "#4c6353"}]}
                              data={posPercentage}/>
-            <CustomLineChart syncId="1"
-                             key={"dt_" + range}
-                             title={"Daily tests"}
-                             data={dailyTests}
+            <CustomLineChart syncId="1" key={"dt_" + range} title={"Daily tests"} data={dailyTests}
                              labels={[{label: "tests", color: "#4c6353"}, {label: "confirmed", color: "#73303c"}]}/>
-            <CustomLineChart key={"d_" + range}
-                             title={"Deaths"}
+            <CustomLineChart key={"d_" + range} title={"Deaths"}
                              labels={[{label: "deathsDaily", color: "#4c6353"}, {label: "deathsTotal", color: "#73303c"}]}
                              data={deathsData}/>
         </div>

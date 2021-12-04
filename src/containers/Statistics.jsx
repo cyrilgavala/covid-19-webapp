@@ -10,9 +10,6 @@ const yesterday = new Date();
 yesterday.setUTCHours(0, 0, 0, 0);
 yesterday.setDate(yesterday.getDate() - 1);
 
-/** @namespace current.numberOfTests **/
-/** @namespace current.confirmed **/
-/** @namespace current.deaths **/
 export default function Statistics() {
 
   const [isLoading, setLoading] = useState(true)

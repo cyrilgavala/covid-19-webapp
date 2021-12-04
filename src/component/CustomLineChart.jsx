@@ -13,7 +13,7 @@ export default function CustomLineChart(props) {
 
     return <div className={"chart-wrapper"}>
         <div className={"chart-title"}>{props.title}</div>
-        <ResponsiveContainer minWidth={800}>
+        <ResponsiveContainer>
             <LineChart width={window.innerWidth} height={400} data={props.data} margin={{top: 20, right: 50, left: 50, bottom: 20}}>
                 <XAxis dataKey={"date"} tick={{fill: '#101726'}} tickFormatter={o => new Date(o).toLocaleDateString()} height={30}/>
                 <Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
