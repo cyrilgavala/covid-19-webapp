@@ -14,11 +14,7 @@ body {
     height: 5rem;
     background-color: #f0e5de;
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-bottom: #73303c 1px solid;
-    z-index: 100;
+    border-bottom: #73303c 3px solid;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -34,31 +30,21 @@ body {
 }
 
 #statistics-container {
-    position: fixed;
     width: 100%;
     padding: 1rem;
-    z-index: 100;
-    top: 5rem;
     display: inline-flex;
     justify-content: space-evenly;
     align-content: center;
     background-color: #1c2842;
-    box-shadow: 0 0 1rem #1c2842;
 }
 
 .stat-card {
     font-size: 1rem;
     text-align: center;
-    width: 20%;
+    width: 30%;
     border-radius: .5rem;
     overflow: hidden;
-    border: #f0e5de 1px solid;
-    transition: 500ms ease !important;
-}
-
-.stat-card:hover {
-    transform: scale(1.3);
-    box-shadow: #1c2842 0 0 2rem;
+    border: #73303c 3px solid;
 }
 
 .stat-card-header {
@@ -76,54 +62,37 @@ body {
     font-weight: bold;
 }
 
-#date-range-dropdown {
-    position: fixed;
-    left: 1rem;
-    top: 1rem;
-    margin: 0;
-    padding: 0;
-    width: min-content;
-    z-index: 100;
+#date-inputs-wrapper {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-evenly;
 }
 
-#select-date-range {
-    border: none;
+.label-input {
     color: #f0e5de;
-    height: 3rem;
-    font-size: 1rem;
-    background-color: #73303c !important;
+    margin-right: .5rem;
+}
+
+.date-input {
     border-radius: .5rem;
     padding: .5rem 1rem;
+    background-color: #73303c;
+    color: #f0e5de;
+    outline: none;
+    border: #f0e5de 1px solid;
 }
 
-#select-date-range:hover {
+.date-input:hover {
+    box-shadow: #f0e5de 0 0 1rem;
+    text-shadow: #f0e5de 0 0 .5rem;
+}
+
+.date-input:focus {
     box-shadow: #f0e5de 0 0 .5rem;
 }
 
-#date-range-dropdown:focus {
-    background-color: #73303c !important;
-}
-
-#date-range-dropdown-menu {
-    background-color: #1c2842;
-    border: #f0e5de 1px solid;
-    padding: 0;
-    border-radius: .5rem;
-    transition: 1s ease;
-    transform-origin: top;
-    overflow: hidden;
-}
-
-.dropdown-item {
-    color: #f0e5de !important;
-    font-size: .75rem;
-    margin: 0;
-    padding: .5rem !important;
-}
-
-.dropdown-item:hover {
-    color: #f0e5de !important;
-    background-color: #73303c !important;
+.date-input:focus + .label-input {
+    text-shadow: #f0e5de 0 0 .5rem;
 }
 
 #graphs-container {
@@ -131,8 +100,6 @@ body {
     display: flex;
     flex-direction: column;
     align-content: space-evenly;
-    position: absolute;
-    top: 10rem;
     padding: 2rem 0;
     background-color: #1c2842;
     background-size: cover;
@@ -164,6 +131,8 @@ body {
     text-align: left !important;
     border: #1c2842 1px solid !important;
     color: #1c2842;
+    border-radius: .5rem;
+    box-shadow: #1c2842 0 0 .25rem;
 }
 
 #copyright {
@@ -172,13 +141,10 @@ body {
     background: #f0e5de;
     width: 100%;
     font-size: 1rem;
-    z-index: 10;
     padding-right: 1rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    position: fixed;
-    bottom: 0;
     border-top: #1c2842 1px solid;
     box-shadow: 0 0 1rem #1c2842;
 }
@@ -193,6 +159,7 @@ a {
 .loading-wrapper {
     width: 100%;
     display: flex;
+    margin: 20% auto;
     justify-content: center;
     position: relative;
     color: #f0e5de;
