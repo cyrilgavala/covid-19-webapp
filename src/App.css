@@ -1,20 +1,22 @@
 body {
-    font-family: Oswald, sans-serif !important;
     background-color: #1c2842 !important;
-    display: block;
-    height: 100vh;
 }
 
 .App {
     height: 100%;
     width: 100%;
+    font-family: Oswald, sans-serif;
+    background-color: #1c2842;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: stretch;
 }
 
 #app-header {
     height: 5rem;
-    background-color: #f0e5de;
+    background: linear-gradient(to top, #1c2842, #141d30);
     width: 100%;
-    border-bottom: #73303c 3px solid;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -23,7 +25,7 @@ body {
 
 #app-header p {
     text-align: right;
-    color: #73303c;
+    color: #f3eae5;
     font-size: 1.5rem;
     padding-top: 1rem;
     padding-right: 1rem;
@@ -44,18 +46,18 @@ body {
     width: 30%;
     border-radius: .5rem;
     overflow: hidden;
-    border: #73303c 3px solid;
+    box-shadow: #f3eae5 0 0 .5rem;
 }
 
 .stat-card-header {
-    background-color: #1c2842;
+    background-color: #141d30;
     height: 2rem;
-    color: #f0e5de;
+    color: #f3eae5;
     padding: .25rem;
 }
 
 .stat-card-body {
-    background-color: #f0e5de;
+    background-color: #f3eae5;
     height: auto;
     padding: .2rem 1rem;
     color: #1c2842;
@@ -69,30 +71,31 @@ body {
 }
 
 .label-input {
-    color: #f0e5de;
+    color: #f3eae5;
     margin-right: .5rem;
 }
 
 .date-input {
     border-radius: .5rem;
     padding: .5rem 1rem;
-    background-color: #73303c;
-    color: #f0e5de;
+    background-color: #141d30;
+    color: #f3eae5;
     outline: none;
-    border: #f0e5de 1px solid;
+    border: #f3eae5 1px solid;
+    cursor: pointer;
 }
 
 .date-input:hover {
-    box-shadow: #f0e5de 0 0 1rem;
-    text-shadow: #f0e5de 0 0 .5rem;
+    box-shadow: #f3eae5 0 0 1rem;
+    text-shadow: #f3eae5 0 0 .5rem;
 }
 
 .date-input:focus {
-    box-shadow: #f0e5de 0 0 .5rem;
+    box-shadow: #f3eae5 0 0 .5rem;
 }
 
 .date-input:focus + .label-input {
-    text-shadow: #f0e5de 0 0 .5rem;
+    text-shadow: #f3eae5 0 0 .5rem;
 }
 
 #graphs-container {
@@ -111,7 +114,7 @@ body {
     border-radius: 1rem;
     height: 500px;
     width: 90%;
-    background-color: #f0e5de;
+    background-color: #141d30;
     z-index: 10;
     box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);
     margin: 2rem auto;
@@ -119,7 +122,7 @@ body {
 }
 
 .chart-title {
-    color: #1c2842;
+    color: #f3eae5;
     padding-top: 1rem;
     font-weight: bold;
     font-size: 1.5rem;
@@ -127,26 +130,24 @@ body {
 }
 
 .recharts-default-tooltip {
-    background-color: #f3eae5 !important;
+    background-color: #141d30 !important;
     text-align: left !important;
-    border: #1c2842 1px solid !important;
-    color: #1c2842;
+    border: #f3eae5 1px solid !important;
+    color: #f3eae5;
     border-radius: .5rem;
-    box-shadow: #1c2842 0 0 .25rem;
+    box-shadow: #141d30 0 0 1rem;
 }
 
 #copyright {
-    color: #1c2842;
+    color: #f3eae5;
     height: 2rem;
-    background: #f0e5de;
+    background: linear-gradient(to top, #141d30, #1c2842);
     width: 100%;
     font-size: 1rem;
     padding-right: 1rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border-top: #1c2842 1px solid;
-    box-shadow: 0 0 1rem #1c2842;
 }
 
 a {
@@ -158,11 +159,10 @@ a {
 
 .loading-wrapper {
     width: 100%;
+    height: 200px;
     display: flex;
-    margin: 20% auto;
     justify-content: center;
-    position: relative;
-    color: #f0e5de;
+    color: #f3eae5;
 }
 
 .lds-roller {
@@ -184,7 +184,7 @@ a {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #f0e5de;
+    background: #f3eae5;
     margin: -4px 0 0 -4px;
 }
 

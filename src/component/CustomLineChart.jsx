@@ -8,17 +8,17 @@ export default function CustomLineChart(props) {
     })
     const yAxis = props.labels.map((item, index) => {
         return <YAxis key={index % 2 === 0 ? "left" : "right"} yAxisId={index % 2 === 0 ? "left" : "right"} tick={{fill: item.color}} width={30}
-                      type={"number"} domain={['auto', 'dataMax+30']} orientation={index % 2 === 0 ? "left" : "right"} scale={"auto"}/>
+                      type={"number"} domain={['auto', 'dataMax+35']} orientation={index % 2 === 0 ? "left" : "right"} scale={"auto"}/>
     })
 
     return <div className={"chart-wrapper"}>
         <div className={"chart-title"}>{props.title}</div>
         <ResponsiveContainer>
             <LineChart width={window.innerWidth} height={400} data={props.data} margin={{top: 20, right: 50, left: 50, bottom: 20}}>
-                <XAxis dataKey={"date"} tick={{fill: '#101726'}} tickFormatter={o => new Date(o).toLocaleDateString()} height={30}/>
+                <XAxis dataKey={"date"} tick={{fill: '#f3eae5'}} tickFormatter={o => new Date(o).toLocaleDateString()} height={30}/>
                 <Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}} labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
                 <Legend height={30} verticalAlign={"top"} iconType={"plainline"}/>
-                <CartesianGrid stroke="#101726"/>
+                <CartesianGrid stroke="#f3eae5"/>
                 {yAxis}
                 {graphElements}
             </LineChart>
