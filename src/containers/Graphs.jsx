@@ -76,14 +76,14 @@ export default function Graphs() {
                 </div>
             </div>
             <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"}
-                             labels={[{label: "percentage", color: "#4c6353"}]}
+                             labels={[{label: "percentage", color: "#f3eae5"}]}
                              data={posPercentage}/>
             <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests}
-                             labels={[{label: "tests", color: "#4c6353"}, {label: "confirmed", color: "#73303c"}]}/>
+                             labels={[{label: "tests", color: "#f3eae5"}, {label: "confirmed", color: "#c2d7e3"}]}/>
             <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"}
-                             labels={[{label: "deathsDaily", color: "#4c6353"}, {
+                             labels={[{label: "deathsDaily", color: "#f3eae5"}, {
                                  label: "deathsTotal",
-                                 color: "#73303c"
+                                 color: "#c2d7e3"
                              }]}
                              data={deathsData}/>
         </div>
