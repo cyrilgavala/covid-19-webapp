@@ -1,6 +1,6 @@
 {
   "name": "covid-19-webapp",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "private": true,
   "dependencies": {
     "axios": "^0.24.0",

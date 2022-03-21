@@ -13,28 +13,20 @@ export default function Graphs() {
     const [dailyTests, setDailyTests] = useState([])
     const [isLoading, setLoading] = useState(true)
 
-    useEffect(() => {
-        loadData(startDate, endDate).then(r => console.log(r))
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-    const loadData = async (start, end) => {
-        const params = translateDatesToParams(start, end)
-        await loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
-        await loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
-        const deathsTotal = await loadSeriesData("deaths", params).then(res => {
-            return res.data
+    useEffect( () => {
+        setLoading(true)
+        const params = translateDatesToParams(startDate, endDate)
+        loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
+        loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
+        loadSeriesData("deaths", params).then(resTotal => {
+            loadSeriesData("deathsDaily", params).then(resDaily => {
+                setDeathsData(resDaily.data.map((item, index) => {
+                    return {deathsDaily: item.deaths, deathsTotal: resTotal.data[index].deaths, date: item.date}
+                }))
+            })
         })
-        const deathsDaily = await loadSeriesData("deathsDaily", params).then(res => {
-            return res.data
-        })
-
-        setDeathsData(deathsDaily.map((item, index) => {
-            return {deathsDaily: item.deaths, deathsTotal: deathsTotal[index].deaths, date: item.date}
-        }))
-
         setLoading(false)
-        return "Statistical data loaded"
-    }
+    }, [startDate, endDate])
 
     const loadSeriesData = async (suffix, params) => {
         return axios.get(properties.apiUrl + 'series/' + suffix, {params: params});
@@ -50,15 +42,11 @@ export default function Graphs() {
     const handleStartDateSelect = async (event) => {
         event.preventDefault()
         setStartDate(event.target.value)
-        setLoading(true)
-        await loadData(event.target.value, endDate)
     }
 
     const handleEndDateSelect = async (event) => {
         event.preventDefault()
         setEndDate(event.target.value)
-        setLoading(true)
-        await loadData(startDate, event.target.value)
     }
 
     if (!isLoading) {
