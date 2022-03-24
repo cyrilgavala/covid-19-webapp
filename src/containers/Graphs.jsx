@@ -2,7 +2,6 @@ import CustomLineChart from "../component/CustomLineChart";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import properties from "../config/properties";
-import Spinner from "../component/Spinner";
 
 export default function Graphs() {
 
@@ -11,10 +10,8 @@ export default function Graphs() {
     const [posPercentage, setPosPercentage] = useState([])
     const [deathsData, setDeathsData] = useState([])
     const [dailyTests, setDailyTests] = useState([])
-    const [isLoading, setLoading] = useState(true)
 
-    useEffect( () => {
-        setLoading(true)
+    useEffect(() => {
         const params = translateDatesToParams(startDate, endDate)
         loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
         loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
@@ -25,7 +22,6 @@ export default function Graphs() {
                 }))
             })
         })
-        setLoading(false)
     }, [startDate, endDate])
 
     const loadSeriesData = async (suffix, params) => {
@@ -49,35 +45,29 @@ export default function Graphs() {
         setEndDate(event.target.value)
     }
 
-    if (!isLoading) {
-        return <div id="graphs-container">
-            <div id={"date-inputs-wrapper"}>
-                <div className={"input-wrapper"}>
-                    <label className={"label-input"}>Start date: </label>
-                    <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
-                           value={startDate} onChange={handleStartDateSelect}/>
-                </div>
-                <div className={"input-wrapper"}>
-                    <label className={"label-input"}>End date: </label>
-                    <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
-                           value={endDate} onChange={handleEndDateSelect}/>
-                </div>
+    return <div id="graphs-container">
+        <div id={"date-inputs-wrapper"}>
+            <div className={"input-wrapper"}>
+                <label className={"label-input"}>Start date: </label>
+                <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
+                       value={startDate} onChange={handleStartDateSelect}/>
             </div>
-            <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"}
-                             labels={[{label: "percentage", color: "#f3eae5"}]}
-                             data={posPercentage}/>
-            <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests}
-                             labels={[{label: "tests", color: "#f3eae5"}, {label: "confirmed", color: "#c2d7e3"}]}/>
-            <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"}
-                             labels={[{label: "deathsDaily", color: "#f3eae5"}, {
-                                 label: "deathsTotal",
-                                 color: "#c2d7e3"
-                             }]}
-                             data={deathsData}/>
+            <div className={"input-wrapper"}>
+                <label className={"label-input"}>End date: </label>
+                <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
+                       value={endDate} onChange={handleEndDateSelect}/>
+            </div>
         </div>
-    } else {
-        return <div className={"loading-wrapper"}>
-            <Spinner/>
-        </div>
-    }
+        <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"}
+                         labels={[{label: "percentage", color: "#f3eae5"}]}
+                         data={posPercentage}/>
+        <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests}
+                         labels={[{label: "tests", color: "#f3eae5"}, {label: "confirmed", color: "#c2d7e3"}]}/>
+        <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"}
+                         labels={[{label: "deathsDaily", color: "#f3eae5"}, {
+                             label: "deathsTotal",
+                             color: "#c2d7e3"
+                         }]}
+                         data={deathsData}/>
+    </div>
 }

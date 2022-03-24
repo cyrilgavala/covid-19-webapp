@@ -1,5 +1,5 @@
-export default function Spinner() {
-    return <div className="lds-roller">
+export default function Spinner(props) {
+    return <div className={"lds-roller " + props.theme} >
         <div/>
         <div/>
         <div/>

@@ -2,11 +2,9 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import InformationCard from "../component/InformationCard";
 import properties from "../config/properties"
-import Spinner from "../component/Spinner";
 
 export default function Statistics() {
 
-    const [isLoading, setLoading] = useState(true)
     const [current, setCurrent] = useState({})
     const [previous, setPrevious] = useState({})
 
@@ -30,23 +28,16 @@ export default function Statistics() {
                 setCurrent(res.data)
                 loadDataForDay(yesterday).then(res => setPrevious(res.data))
             })
-            setLoading(false)
         }
         loadData()
     }, [])
 
-    if (!isLoading) {
-        return <div id="statistics-container">
-            <InformationCard label="No. of tests:" data={current.numberOfTests}
-                             delta={current.numberOfTests - previous.numberOfTests}/>
-            <InformationCard label="Confirmed:" data={current.confirmed}
-                             delta={current.confirmed - previous.confirmed}/>
-            <InformationCard label="Deaths:" data={current.deaths}
-                             delta={current.deaths - previous.deaths}/>
-        </div>
-    } else {
-        return <div className={"loading-wrapper"}>
-            <Spinner/>
-        </div>
-    }
+    return <div id="statistics-container">
+        <InformationCard label="No. of tests:" data={current.numberOfTests}
+                         delta={current.numberOfTests - previous.numberOfTests}/>
+        <InformationCard label="Confirmed:" data={current.confirmed}
+                         delta={current.confirmed - previous.confirmed}/>
+        <InformationCard label="Deaths:" data={current.deaths}
+                         delta={current.deaths - previous.deaths}/>
+    </div>
 }
