@@ -10,18 +10,27 @@ export default function Graphs() {
     const [posPercentage, setPosPercentage] = useState([])
     const [deathsData, setDeathsData] = useState([])
     const [dailyTests, setDailyTests] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        setLoading(true)
         const params = translateDatesToParams(startDate, endDate)
-        loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
-        loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
-        loadSeriesData("deaths", params).then(resTotal => {
-            loadSeriesData("deathsDaily", params).then(resDaily => {
-                setDeathsData(resDaily.data.map((item, index) => {
-                    return {deathsDaily: item.deaths, deathsTotal: resTotal.data[index].deaths, date: item.date}
-                }))
+        try {
+            loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
+            loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
+            loadSeriesData("deaths", params).then(resTotal => {
+                loadSeriesData("deathsDaily", params).then(resDaily => {
+                    setDeathsData(resDaily.data.map((item, index) => {
+                        return {deathsDaily: item.deaths, deathsTotal: resTotal.data[index].deaths, date: item.date}
+                    }))
+                    setLoading(false)
+                })
             })
-        })
+        } catch (e) {
+            console.error(e)
+            setLoading(false)
+        }
+
     }, [startDate, endDate])
 
     const loadSeriesData = async (suffix, params) => {
@@ -58,12 +67,12 @@ export default function Graphs() {
                        value={endDate} onChange={handleEndDateSelect}/>
             </div>
         </div>
-        <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"}
+        <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"} loading={loading}
                          labels={[{label: "percentage", color: "#f3eae5"}]}
                          data={posPercentage}/>
-        <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests}
+        <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests} loading={loading}
                          labels={[{label: "tests", color: "#f3eae5"}, {label: "confirmed", color: "#c2d7e3"}]}/>
-        <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"}
+        <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"} loading={loading}
                          labels={[{label: "deathsDaily", color: "#f3eae5"}, {
                              label: "deathsTotal",
                              color: "#c2d7e3"

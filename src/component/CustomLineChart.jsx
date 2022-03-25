@@ -12,7 +12,7 @@ export default function CustomLineChart(props) {
                       type={"number"} domain={['auto', 'dataMax+35']} orientation={index % 2 === 0 ? "left" : "right"} scale={"auto"}/>
     })
 
-    if (props.data.length > 0) {
+    if (!props.loading) {
         return <div className={"chart-wrapper"}>
             <div className={"chart-title"}>{props.title}</div>
             <ResponsiveContainer>
