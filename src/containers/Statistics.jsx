@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import InformationCard from "../component/InformationCard";
 import properties from "../config/properties"
+import Spinner from "../component/Spinner";
 
 export default function Statistics() {
 
@@ -26,23 +27,27 @@ export default function Statistics() {
             yesterday.setUTCHours(0, 0, 0, 0);
             yesterday.setDate(yesterday.getDate() - 1);
 
-            loadDataForDay(today).then(res => {
-                setCurrent(res.data)
-                loadDataForDay(yesterday).then(res => {
-                    setPrevious(res.data)
-                    setLoading(false)
-                }).catch(() => setLoading(false))
-            }).catch(() => setLoading(false))
+            Promise.all([loadDataForDay(today), loadDataForDay(yesterday)])
+                .then(response => {
+                    setCurrent(response[0].data)
+                    setPrevious(response[1].data)
+                })
+                .catch(err => console.error(err))
+                .finally(() => setLoading(false))
         }
         loadData()
     }, [])
 
-    return <div id="statistics-container">
-        <InformationCard label="No. of tests:" data={current.numberOfTests} loading={loading}
-                         delta={current.numberOfTests - previous.numberOfTests}/>
-        <InformationCard label="Confirmed:" data={current.confirmed} loading={loading}
-                         delta={current.confirmed - previous.confirmed}/>
-        <InformationCard label="Deaths:" data={current.deaths} loading={loading}
-                         delta={current.deaths - previous.deaths}/>
-    </div>
+    if (loading) {
+        return <Spinner theme={"light"}/>
+    } else {
+        return <div id="statistics-container">
+            <InformationCard label="No. of tests:" data={current.numberOfTests}
+                             delta={current.numberOfTests - previous.numberOfTests}/>
+            <InformationCard label="Confirmed:" data={current.confirmed}
+                             delta={current.confirmed - previous.confirmed}/>
+            <InformationCard label="Deaths:" data={current.deaths}
+                             delta={current.deaths - previous.deaths}/>
+        </div>
+    }
 }

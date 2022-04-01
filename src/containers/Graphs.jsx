@@ -14,34 +14,29 @@ export default function Graphs() {
 
     useEffect(() => {
         setLoading(true)
-        const params = translateDatesToParams(startDate, endDate)
-        try {
-            loadSeriesData("positivePercentage", params).then(res => setPosPercentage(res.data))
-            loadSeriesData("testsDaily", params).then(res => setDailyTests(res.data))
-            loadSeriesData("deaths", params).then(resTotal => {
-                loadSeriesData("deathsDaily", params).then(resDaily => {
-                    setDeathsData(resDaily.data.map((item, index) => {
-                        return {deathsDaily: item.deaths, deathsTotal: resTotal.data[index].deaths, date: item.date}
-                    }))
-                    setLoading(false)
-                })
-            })
-        } catch (e) {
-            console.error(e)
-            setLoading(false)
+        const params = {
+            startDate: new Date(startDate).toISOString(),
+            endDate: new Date(endDate).toISOString()
         }
+
+        Promise.all([loadSeriesData("positivePercentage", params),
+            loadSeriesData("testsDaily", params),
+            loadSeriesData("deaths", params),
+            loadSeriesData("deathsDaily", params)])
+            .then(response => {
+                setPosPercentage(response[0].data)
+                setDailyTests(response[1].data)
+                setDeathsData(response[3].data.map((item, index) => {
+                    return {deathsDaily: item.deaths, deathsTotal: response[2].data[index].deaths, date: item.date}
+                }))
+            })
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false))
 
     }, [startDate, endDate])
 
     const loadSeriesData = async (suffix, params) => {
         return axios.get(properties.apiUrl + 'series/' + suffix, {params: params});
-    }
-
-    const translateDatesToParams = (start, end) => {
-        return {
-            startDate: new Date(start).toISOString(),
-            endDate: new Date(end).toISOString()
-        }
     }
 
     const handleStartDateSelect = async (event) => {
