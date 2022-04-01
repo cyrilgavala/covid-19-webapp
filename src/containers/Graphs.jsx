@@ -50,7 +50,7 @@ export default function Graphs() {
     }
 
     return <div id="graphs-container">
-        <div id={"date-inputs-wrapper"}>
+        {!loading && <div id={"date-inputs-wrapper"}>
             <div className={"input-wrapper"}>
                 <label className={"label-input"}>Start date: </label>
                 <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
@@ -61,7 +61,7 @@ export default function Graphs() {
                 <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
                        value={endDate} onChange={handleEndDateSelect}/>
             </div>
-        </div>
+        </div>}
         <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"} loading={loading}
                          labels={[{label: "percentage", color: "#f3eae5"}]}
                          data={posPercentage}/>
