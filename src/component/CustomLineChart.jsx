@@ -18,12 +18,12 @@ export default function CustomLineChart(props) {
             <ResponsiveContainer>
                 <LineChart width={window.innerWidth} height={400} data={props.data}
                            margin={{top: 50, right: 50, left: 50, bottom: 50}}>
-                    <XAxis dataKey={"date"} tick={{fill: '#f3eae5'}}
+                    <XAxis dataKey={"date"} tick={{fill: 'var(--light)'}}
                            tickFormatter={o => new Date(o).toLocaleDateString()} height={30}/>
                     <Tooltip isAnimationActive={false} cursor={{fill: 'transparent'}}
                              labelFormatter={(o) => new Date(o).toLocaleDateString()}/>
                     <Legend height={30} verticalAlign={"top"} iconType={"plainline"}/>
-                    <CartesianGrid stroke="#f3eae5"/>
+                    <CartesianGrid stroke="var(--light)"/>
                     {yAxis}
                     {graphElements}
                 </LineChart>

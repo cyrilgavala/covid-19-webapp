@@ -52,25 +52,25 @@ export default function Graphs() {
     return <div id="graphs-container">
         {!loading && <div id={"date-inputs-wrapper"}>
             <div className={"input-wrapper"}>
-                <label className={"label-input"}>Start date: </label>
+                <div className={"label-input"}>Start date: </div>
                 <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
                        value={startDate} onChange={handleStartDateSelect}/>
             </div>
             <div className={"input-wrapper"}>
-                <label className={"label-input"}>End date: </label>
+                <div className={"label-input"}>End date: </div>
                 <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
                        value={endDate} onChange={handleEndDateSelect}/>
             </div>
         </div>}
         <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"} loading={loading}
-                         labels={[{label: "percentage", color: "#f3eae5"}]}
+                         labels={[{label: "percentage", color: "var(--light)"}]}
                          data={posPercentage}/>
         <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests} loading={loading}
-                         labels={[{label: "tests", color: "#f3eae5"}, {label: "confirmed", color: "#c2d7e3"}]}/>
+                         labels={[{label: "tests", color: "var(--light)"}, {label: "confirmed", color: "var(--second-graph-color)"}]}/>
         <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"} loading={loading}
-                         labels={[{label: "deathsDaily", color: "#f3eae5"}, {
+                         labels={[{label: "deathsDaily", color: "var(--light)"}, {
                              label: "deathsTotal",
-                             color: "#c2d7e3"
+                             color: "var(--second-graph-color)"
                          }]}
                          data={deathsData}/>
     </div>

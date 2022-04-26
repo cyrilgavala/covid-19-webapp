@@ -2,17 +2,23 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    transition: background-color 500ms ease-out, color 500ms ease-in;
 }
 
 body {
-    background-color: #1c2842 !important;
+    --darker: #141d30;
+    --dark: #1c2842;
+    --light: #f3eae5;
+    --second-graph-color: #3c79b4;
+    background-color: var(--dark);
+    height: 100vh;
 }
 
 .App {
     height: 100%;
     width: 100%;
     font-family: Oswald, sans-serif;
-    background-color: #1c2842;
+    background-color: var(--dark);
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -20,15 +26,28 @@ body {
     justify-items: stretch;
 }
 
+#toggleTheme {
+    height: 2rem;
+    width: 2rem;
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+    background-color: var(--dark);
+    color: var(--light);
+    border: unset;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
 #app-header {
     height: 6rem;
-    background: #141d30;
+    background-color: var(--darker);
     width: 100%;
 }
 
 #app-header p {
     text-align: right;
-    color: #f3eae5;
+    color: var(--light);
     font-size: 1.5rem;
     padding: 2rem 5rem;
 }
@@ -38,7 +57,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    background-color: #1c2842;
+    background-color: var(--dark);
     padding: 0 5rem;
 }
 
@@ -47,21 +66,20 @@ body {
     text-align: center;
     border-radius: .5rem;
     overflow: hidden;
-    border: #f3eae5 1px solid;
-    background-color: #f3eae5;
+    border: var(--darker) 1px solid;
 }
 
 .stat-card-header {
-    background-color: #141d30;
-    color: #f3eae5;
+    background-color: var(--darker);
+    color: var(--light);
     padding: .75rem;
 }
 
 .stat-card-body {
-    background-color: #f3eae5;
+    background-color: var(--dark);
     background-size: auto;
     padding: .5rem 1rem;
-    color: #1c2842;
+    color: var(--light);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -74,35 +92,50 @@ body {
     justify-content: space-evenly;
 }
 
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: var(--darker) 1px solid;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+}
+
 .label-input {
-    color: #f3eae5;
+    color: var(--light);
     margin-right: .5rem;
+    width: fit-content;
 }
 
 .date-input {
     font-family: Oswald, sans-serif;
     font-size: 1.2rem;
-    border-radius: .5rem;
-    padding: .5rem 1rem;
-    background-color: #1c2842;
-    color: #f3eae5;
+    background-color: var(--dark);
+    color: var(--light);
     outline: none;
     border: none;
     cursor: pointer;
-    transition: all linear 500ms;
+    width: fit-content;
+    display: inline-block;
+    position: relative;
+    transform: translateY(2px);
 }
 
-.date-input:hover {
-    box-shadow: inset #f3eae5 0 0 .5rem, #f3eae5 0 0 .5rem;
-    text-shadow: #f3eae5 0 0 .5rem;
+.date-input::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    height: 2px;
+    width: 100%;
+    background-color: var(--light);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 250ms ease-in-out;
 }
 
-.date-input:focus {
-    box-shadow: #f3eae5 0 0 .5rem;
-}
-
-.date-input:focus + .label-input {
-    text-shadow: #f3eae5 0 0 .5rem;
+.date-input:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 #graphs-container {
@@ -110,24 +143,24 @@ body {
     display: flex;
     gap: 2rem;
     flex-direction: column;
-    background-color: #1c2842;
+    background-color: var(--dark);
     background-size: cover;
 }
 
 .chart-wrapper {
-    color: #1c2842;
+    color: var(--dark);
     text-align: center;
     border-radius: 1rem;
     height: 500px;
     width: calc(100% - 10rem);
-    background-color: #141d30;
+    background-color: var(--darker);
     z-index: 10;
     margin: auto;
     padding-bottom: 2rem;
 }
 
 .chart-title {
-    color: #f3eae5;
+    color: var(--light);
     padding-top: 1rem;
     font-weight: bold;
     font-size: 1.5rem;
@@ -135,18 +168,18 @@ body {
 }
 
 .recharts-default-tooltip {
-    background-color: #141d30 !important;
+    background-color: var(--darker) !important;
     text-align: left !important;
-    border: #f3eae5 1px solid !important;
-    color: #f3eae5;
+    border: var(--light) 1px solid !important;
+    color: var(--light);
     border-radius: .5rem;
-    box-shadow: #141d30 0 0 1rem;
+    box-shadow: var(--darker) 0 0 1rem;
 }
 
 #copyright {
-    color: #f3eae5;
+    color: var(--light);
     height: 4rem;
-    background: #141d30;
+    background: var(--darker);
     width: 100%;
     font-size: 1rem;
     display: flex;
@@ -156,11 +189,11 @@ body {
 }
 
 a {
-    color: #c2d7e3 !important;
-    text-shadow: #f3eae5 0 0 1rem;
+    color: var(--light) !important;
     text-decoration: none !important;
     margin-left: 3px;
     cursor: pointer !important;
+    font-weight: bold;
 }
 
 .loading-wrapper {
@@ -168,15 +201,15 @@ a {
     height: 200px;
     display: flex;
     justify-content: center;
-    color: #141d30;
+    color: var(--darker);
 }
 
 .light div:after {
-    background: #f3eae5;
+    background: var(--light);
 }
 
 .dark div:after {
-    background: #141d30;
+    background: var(--darker);
 }
 
 .lds-roller {
