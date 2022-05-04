@@ -15,7 +15,7 @@ export default function App() {
         <ThemeProvider theme={theme ? lightTheme : darkTheme}>
             <GlobalStyles/>
             <div className="App">
-                <button id={"toggleTheme"} className={theme ? "fa fa-sun-o" : "fa fa-moon-o"} onClick={() => setTheme(!theme)}/>
+                <button id="toggleTheme" className={theme ? "fa fa-sun-o" : "fa fa-moon-o"} onClick={() => setTheme(!theme)}/>
                 <Header/>
                 <Statistics/>
                 <Graphs/>

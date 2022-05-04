@@ -6,7 +6,7 @@ import properties from "../config/properties";
 export default function Graphs() {
 
     const [startDate, setStartDate] = useState("2020-11-27")
-    const [endDate, setEndDate] = useState(new Date().toISOString().slice(0, 10))
+    const [endDate, setEndDate] = useState("2022-04-28")
     const [posPercentage, setPosPercentage] = useState([])
     const [deathsData, setDeathsData] = useState([])
     const [dailyTests, setDailyTests] = useState([])
@@ -50,28 +50,27 @@ export default function Graphs() {
     }
 
     return <div id="graphs-container">
-        {!loading && <div id={"date-inputs-wrapper"}>
-            <div className={"input-wrapper"}>
-                <div className={"label-input"}>Start date: </div>
-                <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
+        {!loading && <div id="date-inputs-wrapper">
+            <div className="input-wrapper">
+                <div className="label-input">Start date: </div>
+                <input className="date-input" type="date" min="2020-11-27" max="2022-04-27"
                        value={startDate} onChange={handleStartDateSelect}/>
             </div>
-            <div className={"input-wrapper"}>
-                <div className={"label-input"}>End date: </div>
-                <input className={"date-input"} type={"date"} min={"2020-11-27"} max={new Date().toDateString()}
+            <div className="input-wrapper">
+                <div className="label-input">End date: </div>
+                <input className="date-input" type="date" min="2020-11-27" max="2022-04-28"
                        value={endDate} onChange={handleEndDateSelect}/>
             </div>
         </div>}
-        <CustomLineChart key={"pp_" + startDate + endDate} title={"Positive percentage"} loading={loading}
+        <CustomLineChart key={"pp_" + startDate + endDate} title="Positive percentage" loading={loading}
                          labels={[{label: "percentage", color: "var(--light)"}]}
                          data={posPercentage}/>
-        <CustomLineChart key={"dt_" + startDate + endDate} title={"Daily tests"} data={dailyTests} loading={loading}
+        <CustomLineChart key={"dt_" + startDate + endDate} title="Daily tests" data={dailyTests} loading={loading}
                          labels={[{label: "tests", color: "var(--light)"}, {label: "confirmed", color: "var(--second-graph-color)"}]}/>
-        <CustomLineChart key={"d_" + startDate + endDate} title={"Deaths"} loading={loading}
+        <CustomLineChart key={"d_" + startDate + endDate} title="Deaths" loading={loading}
                          labels={[{label: "deathsDaily", color: "var(--light)"}, {
                              label: "deathsTotal",
                              color: "var(--second-graph-color)"
-                         }]}
-                         data={deathsData}/>
+                         }]} data={deathsData}/>
     </div>
 }

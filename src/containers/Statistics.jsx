@@ -10,32 +10,20 @@ export default function Statistics() {
     const [previous, setPrevious] = useState({})
     const [loading, setLoading] = useState(true)
 
-    async function loadDataForDay(date) {
-        return axios.get(properties.apiUrl + 'stats/day', {
-            params: {
-                date: date.toISOString()
-            }
-        })
-    }
+    const loadDataForDay = async date => axios.get(properties.apiUrl + 'stats/day', {params: {date: date}})
 
     useEffect(() => {
-        const loadData = () => {
-            setLoading(true)
-            const today = new Date();
-            today.setUTCHours(0, 0, 0, 0);
-            const yesterday = new Date();
-            yesterday.setUTCHours(0, 0, 0, 0);
-            yesterday.setDate(yesterday.getDate() - 1);
+        setLoading(true)
+        const today = new Date(Date.UTC(2022, 3, 28, 0, 0, 0)).toISOString();
+        const yesterday = new Date(Date.UTC(2022, 3, 27, 0, 0, 0)).toISOString();
 
-            Promise.all([loadDataForDay(today), loadDataForDay(yesterday)])
-                .then(response => {
-                    setCurrent(response[0].data)
-                    setPrevious(response[1].data)
-                })
-                .catch(err => console.error(err))
-                .finally(() => setLoading(false))
-        }
-        loadData()
+        Promise.all([loadDataForDay(today), loadDataForDay(yesterday)])
+            .then(response => {
+                setCurrent(response[0].data)
+                setPrevious(response[1].data)
+            })
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false))
     }, [])
 
     if (loading) {
@@ -48,6 +36,8 @@ export default function Statistics() {
                              delta={current.confirmed - previous.confirmed}/>
             <InformationCard label="Deaths:" data={current.deaths}
                              delta={current.deaths - previous.deaths}/>
+            <p>Last data are available from 28.4.2022. Also there's low probability of new data available,
+                therefore web-scrap app was turned off.</p>
         </div>
     }
 }

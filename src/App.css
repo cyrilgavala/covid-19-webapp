@@ -61,6 +61,12 @@ body {
     padding: 0 5rem;
 }
 
+#statistics-container p {
+    width: 100%;
+    color: var(--light);
+    grid-column: span 3;
+}
+
 .stat-card {
     font-size: 1rem;
     text-align: center;
